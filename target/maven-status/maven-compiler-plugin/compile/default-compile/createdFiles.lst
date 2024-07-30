@@ -8,5 +8,6 @@ de\huntertagog\locobroko\commands\StarsCommand.class
 de\huntertagog\locobroko\listener\PlayerListener.class
 de\huntertagog\locobroko\manager\CoinManager.class
 de\huntertagog\locobroko\commands\ReloadCommand.class
-de\huntertagog\locobroko\api\CoinAPIImplementation.class
+de\huntertagog\locobroko\api\ICoinAPI.class
 de\huntertagog\locobroko\CoinSystem$1.class
+de\huntertagog\locobroko\api\CoinAPIImpl.class

@@ -143,6 +143,17 @@ public class CoinManager {
     }
 
     /**
+     *
+     * Loads a player's coin balance from the database.
+     *
+     */
+    public void loadAllPlayers() {
+        for (UUID playerUUID : database.getAllPlayerUUIDs()) {
+            loadPlayer(playerUUID);
+        }
+    }
+
+    /**
      * Creates a backup of the current coin balances if backup is enabled.
      */
     public void backupData() {

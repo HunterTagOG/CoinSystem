@@ -9,9 +9,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Handles database operations for managing player coins and logs.
@@ -128,6 +126,25 @@ public class Database {
         } catch (SQLException e) {
             logger.error("Error updating coins for player {}", playerUUID, e);
         }
+    }
+
+    /**
+     * Retrieves all player UUIDs from the player_coins table.
+     *
+     * @return a set of UUIDs representing all players in the database
+     */
+    public Set<UUID> getAllPlayerUUIDs() {
+        Set<UUID> uuids = new HashSet<>();
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement("SELECT uuid FROM player_coins");
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                uuids.add(UUID.fromString(rs.getString("uuid")));
+            }
+        } catch (SQLException e) {
+            logger.error("Error retrieving player UUIDs", e);
+        }
+        return uuids;
     }
 
     /**

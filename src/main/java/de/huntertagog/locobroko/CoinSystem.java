@@ -33,6 +33,9 @@ public final class CoinSystem extends SimplePlugin {
         this.saveDefaultConfig();
         coinManager = new CoinManager(getInstance());
 
+        // Load all player data into memory
+        coinManager.loadAllPlayers();
+
         // Register the API
         coinAPI = new CoinAPIImpl(coinManager);
         CoinAPI.setApi(coinAPI);
