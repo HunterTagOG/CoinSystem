@@ -15,9 +15,28 @@ CoinSystem ist ein Minecraft-Plugin, das eine API zur Verwaltung von Spieler-Coi
 
 1. Importieren Sie CoinSystem mit Maven oder Gradle (siehe Importing).
 2. **WICHTIG**: Konfigurieren Sie das Shading, um nur CoinSystem und die benötigten Bibliotheken einzuschließen, damit nicht alle Abhängigkeiten in Ihr Jar aufgenommen werden.
-3. Ändern Sie `extends JavaPlugin` zu `extends SimplePlugin`.
-4. Ändern Sie `onEnable()` zu `onPluginStart()` und `onDisable()` zu `onPluginStop()`.
-5. Wenn Sie eine `static getInstance()` Methode in Ihrer Haupt-Plugin-Klasse verwenden, ändern Sie diese, um `(T) SimplePlugin.getInstance()` zurückzugeben, wobei T Ihr Plugin ist. Entfernen Sie die Instanz Ihres Plugins aus Ihrer Klasse, falls vorhanden.
+3. Registrieren Sie die CoinAPI in Ihrem Plugin:
+    ```java
+    import de.huntertagog.locobroko.api.CoinAPI;
+    import org.bukkit.Bukkit;
+    import org.bukkit.plugin.java.JavaPlugin;
+    import java.util.UUID;
+
+    public class MyPlugin extends JavaPlugin {
+        @Override
+        public void onEnable() {
+            CoinAPI coinAPI = Bukkit.getServicesManager().load(CoinAPI.class);
+            if (coinAPI != null) {
+                // Verwenden Sie die API
+                UUID playerUUID = ...; // Die UUID des Spielers
+                int coins = coinAPI.getCoins(playerUUID);
+                coinAPI.addCoins(playerUUID, 50);
+            } else {
+                getLogger().severe("CoinAPI not found!");
+            }
+        }
+    }
+    ```
 
 ## Importing
 
@@ -40,45 +59,7 @@ Suchen Sie dann den `<dependencies>` Abschnitt Ihrer pom.xml und fügen Sie Folg
 </dependency>
 ```
 
-## Shading (wichtig!)
-Siehe Schritt 2 im Quick Start Guide oben.
-
-CoinSystem kommt mit einigen Bibliotheken, die für Sie verfügbar sind, z.B. HikariCP, um sicherzustellen, dass sie beim Codieren zugänglich sind, aber nicht als Abhängigkeiten hinzugefügt werden müssen.
-
-Maven hat eine Einschränkung, bei der diese Bibliotheken in Ihrer Plugin-JAR-Datei landen, wenn Sie die `<includes>` Sektion des maven-shade-plugin nicht richtig konfigurieren.
-
-Kopieren Sie den folgenden Abschnitt und fügen Sie ihn in Ihren `<plugins>` Abschnitt der `pom.xml` ein (wenn Sie bereits einen solchen Abschnitt haben, entfernen Sie ihn).
-
-Stellen Sie sicher, dass Sie `your.plugin.main.package` unten in Ihren eigenen Paketnamen ändern.
-
-Wenn Sie eine Abhängigkeit in Ihr Jar kompilieren möchten, installieren Sie sie normal über die `<dependency>` Direktive, setzen Sie ihren Scope auf "compile" und fügen Sie sie dann erneut hinzu. Sie können einfach die `<include>` duplizieren und für Ihre Abhängigkeit ändern.
-
-```xml
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-shade-plugin</artifactId>
-    <version>3.2.4</version>
-    <executions>
-        <execution>
-            <phase>package</phase>
-            <goals>
-                <goal>shade</goal>
-            </goals>
-        </execution>
-    </executions>
-    <configuration>
-        <createDependencyReducedPom>false</createDependencyReducedPom>
-        <artifactSet>
-            <includes>
-                <include>com.github.HunterTagOG:CoinSystem*</include>
-            </includes>
-        </artifactSet>
-    </configuration>
-</plugin>
-
-```
-
-Für weitere Informationen, einschließlich der Verwendung von CoinSystem mit anderen Tools als Maven, besuchen Sie bitte: https://jitpack.io/#your-github-username/CoinSystem/
+Für weitere Informationen, einschließlich der Verwendung von CoinSystem mit anderen Tools als Maven, besuchen Sie bitte: https://jitpack.io/#HunterTagOG/CoinSystem/
 
 ##Methoden
 `int getCoins(UUID playerUUID)`
@@ -111,8 +92,8 @@ database:
   # The password for accessing your MySQL database
   password: yourDatabasePassword
 
-# The prefix used in chat messages for the CoinSystem plugin
-prefix: ★Stars
+# The currency used in chat messages for the CoinSystem plugin
+prefix: ★ Stars
 
 # The starting balance for new players
 # This is the number of coins that new players will start with when they first join the server
@@ -142,6 +123,6 @@ Wir bemühen uns, eine breite Kompatibilität zu gewährleisten, die die folgend
 CoinSystem funktioniert auf Bukkit, Spigot und Paper.
 
 ##Lizenzinformationen
-© 2024 HUNTERTAGOG
+© 2024 HUNTER DEVELOPMENT
 
 Mit der MIT-Lizenz können Sie alles tun, was Sie möchten, solange Sie die ursprünglichen Urheberrechtsvermerke und Haftungsausschlüsse beibehalten. Eine Kopie der Lizenz finden Sie im Repository.
