@@ -48,27 +48,27 @@ Stellen Sie sicher, dass Sie `your.plugin.main.package` unten in Ihren eigenen P
 Wenn Sie eine Abhängigkeit in Ihr Jar kompilieren möchten, installieren Sie sie normal über die `<dependency>` Direktive, setzen Sie ihren Scope auf "compile" und fügen Sie sie dann erneut hinzu. Sie können einfach die `<include>` duplizieren und für Ihre Abhängigkeit ändern.
 
 ```xml
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-shade-plugin</artifactId>
-    <version>3.2.4</version>
-    <executions>
-        <execution>
-            <phase>package</phase>
-            <goals>
-                <goal>shade</goal>
-            </goals>
-        </execution>
-    </executions>
-    <configuration>
-        <createDependencyReducedPom>false</createDependencyReducedPom>
-        <artifactSet>
-            <includes>
-                <include>com.github.HunterTagOG:CoinSystem*</include>
-            </includes>
-        </artifactSet>
-    </configuration>
-</plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>3.2.4</version>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <createDependencyReducedPom>false</createDependencyReducedPom>
+                <artifactSet>
+                    <includes>
+                        <include>de.huntertagog.locobroko.CoinSystem</include>
+                    </includes>
+                </artifactSet>
+            </configuration>
+        </plugin>
 
 ```
 
