@@ -79,15 +79,15 @@ Wenn Sie eine Abhängigkeit in Ihr Jar kompilieren möchten, installieren Sie si
 2. **WICHTIG**: Konfigurieren Sie das Shading, um nur CoinSystem und die benötigten Bibliotheken einzuschließen, damit nicht alle Abhängigkeiten in Ihr Jar aufgenommen werden.
 3. Registrieren Sie die CoinAPI in Ihrem Plugin:
     ```java
-    import de.huntertagog.locobroko.api.CoinAPI;
-    import org.bukkit.Bukkit;
+    import de.huntertagog.locobroko.api.ICoinAPI;
+    import de.huntertagog.locobroko.api.ICoinAPI;import org.bukkit.Bukkit;
     import org.bukkit.plugin.java.JavaPlugin;
     import java.util.UUID;
 
     public class MyPlugin extends JavaPlugin {
         @Override
         public void onEnable() {
-            CoinAPI coinAPI = Bukkit.getServicesManager().load(CoinAPI.class);
+            ICoinAPI coinAPI = Bukkit.getServicesManager().load(ICoinAPI.class);
             if (coinAPI != null) {
                 // Verwenden Sie die API
                 UUID playerUUID = ...; // Die UUID des Spielers

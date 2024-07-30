@@ -1,7 +1,8 @@
 package de.huntertagog.locobroko;
 
 import de.huntertagog.locobroko.api.CoinAPI;
-import de.huntertagog.locobroko.api.CoinAPIImplementation;
+import de.huntertagog.locobroko.api.ICoinAPI;
+import de.huntertagog.locobroko.api.CoinAPIImpl;
 import de.huntertagog.locobroko.listener.PlayerListener;
 import de.huntertagog.locobroko.manager.CoinManager;
 import lombok.Getter;
@@ -19,6 +20,8 @@ public final class CoinSystem extends SimplePlugin {
 
     private static CoinSystem instance;
     private CoinManager coinManager;
+    @Getter
+    private CoinAPIImpl coinAPI;
 
     /**
      * Called when the plugin is first enabled. Initializes configuration, registers API, events,
@@ -31,8 +34,9 @@ public final class CoinSystem extends SimplePlugin {
         coinManager = new CoinManager(getInstance());
 
         // Register the API
-        CoinAPIImplementation coinAPIImplementation = new CoinAPIImplementation(coinManager);
-        Bukkit.getServicesManager().register(CoinAPI.class, coinAPIImplementation, this, ServicePriority.Normal);
+        coinAPI = new CoinAPIImpl(coinManager);
+        CoinAPI.setApi(coinAPI);
+        Bukkit.getServicesManager().register(ICoinAPI.class, coinAPI, this, ServicePriority.Normal);
 
         // Register event listeners
         getServer().getPluginManager().registerEvents(new PlayerListener(), this);

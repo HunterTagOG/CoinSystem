@@ -8,7 +8,7 @@ import java.util.UUID;
  * Implementation of the CoinAPI interface.
  * Manages player coins using the CoinManager.
  */
-public class CoinAPIImplementation implements CoinAPI {
+public class CoinAPIImpl implements ICoinAPI {
     private final CoinManager coinManager;
 
     /**
@@ -16,7 +16,7 @@ public class CoinAPIImplementation implements CoinAPI {
      * Initializes the CoinAPIImplementation with the given CoinManager.
      *
      */
-    public CoinAPIImplementation(CoinManager coinManager) {
+    public CoinAPIImpl(CoinManager coinManager) {
         this.coinManager = coinManager;
     }
 
