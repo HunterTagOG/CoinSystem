@@ -61,7 +61,9 @@ Suchen Sie dann den `<dependencies>` Abschnitt Ihrer pom.xml und fügen Sie Folg
 
 Für weitere Informationen, einschließlich der Verwendung von CoinSystem mit anderen Tools als Maven, besuchen Sie bitte: https://jitpack.io/#HunterTagOG/CoinSystem/
 
+
 ##Methoden
+
 `int getCoins(UUID playerUUID)`
 Gibt die Anzahl der Coins für einen bestimmten Spieler zurück.
 
