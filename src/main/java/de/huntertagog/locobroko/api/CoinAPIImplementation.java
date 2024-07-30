@@ -16,8 +16,8 @@ public class CoinAPIImplementation implements CoinAPI {
      * Initializes the CoinAPIImplementation with the given CoinManager.
      *
      */
-    public CoinAPIImplementation() {
-        this.coinManager = CoinManager.getInstance();
+    public CoinAPIImplementation(CoinManager coinManager) {
+        this.coinManager = coinManager;
     }
 
     /**

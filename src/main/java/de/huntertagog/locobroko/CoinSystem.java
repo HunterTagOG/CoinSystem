@@ -10,6 +10,7 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.mineacademy.fo.plugin.SimplePlugin;
+import org.bukkit.plugin.ServicePriority;
 
 import java.util.UUID;
 
@@ -30,7 +31,8 @@ public final class CoinSystem extends SimplePlugin {
         coinManager = new CoinManager(getInstance());
 
         // Register the API
-        Bukkit.getServicesManager().register(CoinAPI.class, new CoinAPIImplementation(), this, org.bukkit.plugin.ServicePriority.Normal);
+        CoinAPIImplementation coinAPIImplementation = new CoinAPIImplementation(coinManager);
+        Bukkit.getServicesManager().register(CoinAPI.class, coinAPIImplementation, this, ServicePriority.Normal);
 
         // Register event listeners
         getServer().getPluginManager().registerEvents(new PlayerListener(), this);
