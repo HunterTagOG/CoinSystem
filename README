@@ -40,7 +40,7 @@ CoinSystem ist ein Minecraft-Plugin, das eine API zur Verwaltung von Spieler-Coi
 	    <dependency>
 	        <groupId>com.github.HunterTagOG</groupId>
 	        <artifactId>CoinSystem</artifactId>
-	        <version>v1.0.1-SNAPSHOT</version>
+	        <version>v1.0.2-SNAPSHOT</version>
     	</dependency>
     </dependencies>
     ```
@@ -50,19 +50,21 @@ CoinSystem ist ein Minecraft-Plugin, das eine API zur Verwaltung von Spieler-Coi
 1. **Repository hinzufügen**: Fügen Sie das CoinSystem-Repository zu Ihrem `build.gradle` hinzu:
 
     ```groovy
-    repositories {
-        maven {
-            url 'http://your-repo-url'
-        }
-    }
+	dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+		repositories {
+			mavenCentral()
+			maven { url 'https://jitpack.io' }
+		}
+	}
     ```
 
 2. **Abhängigkeit hinzufügen**: Fügen Sie die CoinSystem-Abhängigkeit zu Ihrem `build.gradle` hinzu:
 
     ```groovy
-    dependencies {
-        implementation 'de.huntertagog:coinsystem:1.0'
-    }
+	dependencies {
+	        implementation 'com.github.HunterTagOG:CoinSystem:v1.0.2-SNAPSHOT'
+	}
     ```
 
 ## Verwendung
