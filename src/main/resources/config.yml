@@ -1,0 +1,50 @@
+# CoinSystem Configuration
+
+# Database connection settings
+database:
+  # The JDBC URL of your MySQL database
+  # Example: jdbc:mysql://localhost:3306/minecraft
+  url: jdbc:mysql://172.17.0.1:3306/s1_coinsystem
+
+  # The username for accessing your MySQL database
+  user: u1_Cx9mnonSS9
+
+  # The password for accessing your MySQL database
+  password: =Gfdy@KE2fTVyr0ZxayQnjB8
+
+# The prefix used in chat messages for the CoinSystem plugin
+prefix: ★
+
+# The starting balance for new players
+# This is the number of coins that new players will start with when they first join the server
+starting_balance: 1000
+
+# Backup settings
+# Enable or disable regular backups of player coin balances
+# Set to true to enable regular backups, false to disable
+backup_enabled: false
+
+# The interval for regular backups in minutes
+# This determines how often the plugin will create a backup of player coin balances
+# For example, setting this to 30 means a backup will be created every 30 minutes
+backup_interval_minutes: 30
+
+# Logging settings
+# Enable or disable transaction logging
+# Set to true to log all transactions, false to disable logging
+logging_enabled: false
+
+# Detailed Descriptions:
+#
+# database:
+#   url: The connection string for your MySQL database. Ensure this URL is correct and points to your database server.
+#   user: The username to log into your database. Make sure this user has sufficient permissions to read and write.
+#   password: The password for the above database user.
+#
+# starting_balance: The amount of coins a player starts with when they first join the server. Adjust this to set your server's starting economy.
+#
+# backup_enabled: If true, the plugin will create backups of player coin balances at regular intervals.
+#
+# backup_interval_minutes: The interval, in minutes, at which backups will be created if backup_enabled is true. Adjust this interval based on how frequently you want to save backups.
+#
+# logging_enabled: If true, all coin transactions (adding, removing, setting coins) will be logged in the database. This can be useful for tracking player activity and detecting potential issues or abuse.

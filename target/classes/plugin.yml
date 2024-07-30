@@ -1,0 +1,5 @@
+name: CoinSystem
+version: '1.0'
+main: de.huntertagog.locobroko.CoinSystem
+api-version: '1.20'
+authors: [HunterTagOG]

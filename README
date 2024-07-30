@@ -1,0 +1,94 @@
+# CoinSystem Plugin
+
+CoinSystem ist ein Minecraft-Plugin, das eine API zur Verwaltung von Spieler-Coins bereitstellt. Dieses Dokument erklärt, wie Sie das Plugin installieren und die API in Ihren eigenen Plugins verwenden können.
+
+## Installation
+
+### Manuelle Installation
+
+1. **Herunterladen**: Laden Sie die neueste Version der CoinSystem-Plugin-JAR-Datei herunter und fügen Sie sie zu Ihrem `plugins`-Ordner im Minecraft-Serververzeichnis hinzu.
+
+2. **plugin.yml anpassen**: Stellen Sie sicher, dass Ihr Plugin nach CoinSystem geladen wird, indem Sie `softdepend` oder `depend` in Ihrer `plugin.yml` hinzufügen:
+
+    ```yaml
+    name: MyPlugin
+    main: com.example.MyPlugin
+    version: 1.0
+    api-version: 1.20
+    softdepend: [CoinSystem]
+    ```
+
+3. **Server neu starten**: Starten Sie Ihren Minecraft-Server neu, damit das CoinSystem-Plugin geladen wird.
+
+### Installation mit Maven
+
+1. **Repository hinzufügen**: Fügen Sie das CoinSystem-Repository zu Ihrer `pom.xml` hinzu:
+
+    ```xml
+    <repositories>
+        <repository>
+            <id>my-repo</id>
+            <url>http://your-repo-url</url>
+        </repository>
+    </repositories>
+    ```
+
+2. **Abhängigkeit hinzufügen**: Fügen Sie die CoinSystem-Abhängigkeit zu Ihrer `pom.xml` hinzu:
+
+    ```xml
+    <dependencies>
+        <dependency>
+            <groupId>de.huntertagog</groupId>
+            <artifactId>coinsystem</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    ```
+
+### Installation mit Gradle
+
+1. **Repository hinzufügen**: Fügen Sie das CoinSystem-Repository zu Ihrem `build.gradle` hinzu:
+
+    ```groovy
+    repositories {
+        maven {
+            url 'http://your-repo-url'
+        }
+    }
+    ```
+
+2. **Abhängigkeit hinzufügen**: Fügen Sie die CoinSystem-Abhängigkeit zu Ihrem `build.gradle` hinzu:
+
+    ```groovy
+    dependencies {
+        implementation 'de.huntertagog:coinsystem:1.0'
+    }
+    ```
+
+## Verwendung
+
+### Zugriff auf die API
+
+So greifen Sie auf die CoinAPI zu und verwenden sie in Ihrem Plugin:
+
+```java
+import de.huntertagog.locobroko.api.CoinAPI;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.java.JavaPlugin;
+import java.util.UUID;
+
+public class MyPlugin extends JavaPlugin {
+    @Override
+    public void onEnable() {
+        CoinAPI coinAPI = Bukkit.getServicesManager().load(CoinAPI.class);
+        if (coinAPI != null) {
+            // Verwenden Sie die API
+            UUID playerUUID = ...; // Die UUID des Spielers
+            int coins = coinAPI.getCoins(playerUUID);
+            coinAPI.addCoins(playerUUID, 50);
+        } else {
+            getLogger().severe("CoinAPI not found!");
+        }
+    }
+}

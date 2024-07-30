@@ -1,0 +1,12 @@
+de\huntertagog\locobroko\manager\CoinManager$1.class
+de\huntertagog\locobroko\commands\LogCommand.class
+de\huntertagog\locobroko\database\Database.class
+de\huntertagog\locobroko\CoinSystem.class
+de\huntertagog\locobroko\api\CoinAPI.class
+de\huntertagog\locobroko\commands\LogResetCommand.class
+de\huntertagog\locobroko\commands\StarsCommand.class
+de\huntertagog\locobroko\listener\PlayerListener.class
+de\huntertagog\locobroko\manager\CoinManager.class
+de\huntertagog\locobroko\commands\ReloadCommand.class
+de\huntertagog\locobroko\api\CoinAPIImplementation.class
+de\huntertagog\locobroko\CoinSystem$1.class
