@@ -11,6 +11,68 @@ CoinSystem ist ein Minecraft-Plugin, das eine API zur Verwaltung von Spieler-Coi
 - Regelmäßige Backups von Spielerdaten
 - Konfigurierbare Startbalance und Backup-Intervalle
 
+## Importing
+
+Wir verwenden JitPack, um die neueste Version von CoinSystem automatisch zu kompilieren und zu hosten. Um CoinSystem mit Maven zu installieren, öffnen Sie Ihre `pom.xml`, suchen Sie den `<repositories>` Abschnitt und fügen Sie dieses Repository hinzu:
+
+```xml
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+```
+
+Suchen Sie dann den `<dependencies>` Abschnitt Ihrer pom.xml und fügen Sie Folgendes hinzu. Ersetzen Sie "REPLACE_WITH_LATEST_VERSION" durch die neueste Version von: [Github](https://github.com/HunterTagOG/CoinSystem/releases)
+
+```xml
+<dependency>
+    <groupId>com.github.HunterTagOG</groupId>
+    <artifactId>CoinSystem</artifactId>
+    <version>REPLACE_WITH_LATEST_VERSION</version>
+</dependency>
+```
+
+Für weitere Informationen, einschließlich der Verwendung von CoinSystem mit anderen Tools als Maven, besuchen Sie bitte: [Jitpack](https://jitpack.io/#HunterTagOG/CoinSystem/)
+
+## Shading (wichtig!)
+Siehe Schritt 2 im Quick Start Guide oben.
+
+CoinSystem kommt mit einigen Bibliotheken, die für Sie verfügbar sind, z.B. HikariCP, um sicherzustellen, dass sie beim Codieren zugänglich sind, aber nicht als Abhängigkeiten hinzugefügt werden müssen.
+
+Maven hat eine Einschränkung, bei der diese Bibliotheken in Ihrer Plugin-JAR-Datei landen, wenn Sie die `<includes>` Sektion des maven-shade-plugin nicht richtig konfigurieren.
+
+Kopieren Sie den folgenden Abschnitt und fügen Sie ihn in Ihren `<plugins>` Abschnitt der pom.xml ein (wenn Sie bereits einen solchen Abschnitt haben, entfernen Sie ihn).
+
+Stellen Sie sicher, dass Sie `your.plugin.main.package` unten in Ihren eigenen Paketnamen ändern.
+
+Wenn Sie eine Abhängigkeit in Ihr Jar kompilieren möchten, installieren Sie sie normal über die `<dependency>` Direktive, setzen Sie ihren Scope auf "compile" und fügen Sie sie dann erneut hinzu. Sie können einfach die `<include>` duplizieren und für Ihre Abhängigkeit ändern.
+
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-shade-plugin</artifactId>
+    <version>3.2.4</version>
+    <executions>
+        <execution>
+            <phase>package</phase>
+            <goals>
+                <goal>shade</goal>
+            </goals>
+        </execution>
+    </executions>
+    <configuration>
+        <createDependencyReducedPom>false</createDependencyReducedPom>
+        <artifactSet>
+            <includes>
+                <include>com.github.HunterTagOG:CoinSystem*</include>
+            </includes>
+        </artifactSet>
+    </configuration>
+</plugin>
+
+```
+
+
 ## Quick Start
 
 1. Importieren Sie CoinSystem mit Maven oder Gradle (siehe Importing).
@@ -38,30 +100,8 @@ CoinSystem ist ein Minecraft-Plugin, das eine API zur Verwaltung von Spieler-Coi
     }
     ```
 
-## Importing
+## Methoden
 
-Wir verwenden JitPack, um die neueste Version von CoinSystem automatisch zu kompilieren und zu hosten. Um CoinSystem mit Maven zu installieren, öffnen Sie Ihre `pom.xml`, suchen Sie den `<repositories>` Abschnitt und fügen Sie dieses Repository hinzu:
-
-```xml
-<repository>
-    <id>jitpack.io</id>
-    <url>https://jitpack.io</url>
-</repository>
-```
-
-Suchen Sie dann den `<dependencies>` Abschnitt Ihrer pom.xml und fügen Sie Folgendes hinzu. Ersetzen Sie "REPLACE_WITH_LATEST_VERSION" durch die neueste Version von: [Github](https://github.com/HunterTagOG/CoinSystem/releases)
-
-```xml
-<dependency>
-    <groupId>com.github.your-github-username</groupId>
-    <artifactId>CoinSystem</artifactId>
-    <version>REPLACE_WITH_LATEST_VERSION</version>
-</dependency>
-```
-
-Für weitere Informationen, einschließlich der Verwendung von CoinSystem mit anderen Tools als Maven, besuchen Sie bitte: https://jitpack.io/#HunterTagOG/CoinSystem/
-
-##Methoden
 `int getCoins(UUID playerUUID)`
 Gibt die Anzahl der Coins für einen bestimmten Spieler zurück.
 
@@ -74,7 +114,7 @@ Entfernt eine bestimmte Anzahl Coins vom Guthaben eines Spielers.
 `void setCoins(UUID playerUUID, int amount)`
 Setzt das Guthaben eines Spielers auf eine bestimmte Anzahl Coins.
 
-##Konfiguration
+## Konfiguration
 Die Konfiguration des CoinSystem-Plugins erfolgt über die config.yml-Datei. Hier ist ein Beispiel:
 
 ```yaml
@@ -115,7 +155,7 @@ backup_interval_minutes: 30
 logging_enabled: true
 ```
 
-##Kompatibilität
+## Kompatibilität
 Wir bemühen uns, eine breite Kompatibilität zu gewährleisten, die die folgenden Minecraft-Versionen unterstützt und weitere werden folgen:
 
 1.20.x
