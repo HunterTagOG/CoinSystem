@@ -167,7 +167,8 @@ Wir bemühen uns, eine breite Kompatibilität zu gewährleisten, die die folgend
 
 CoinSystem funktioniert auf Bukkit, Spigot und Paper.
 
-##Lizenzinformationen
+## Lizenzinformationen
+
 © 2024 HUNTER DEVELOPMENT
 
 Mit der MIT-Lizenz können Sie alles tun, was Sie möchten, solange Sie die ursprünglichen Urheberrechtsvermerke und Haftungsausschlüsse beibehalten. Eine Kopie der Lizenz finden Sie im Repository.
