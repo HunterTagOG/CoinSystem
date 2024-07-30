@@ -26,13 +26,13 @@ Suchen Sie dann den `<dependencies>` Abschnitt Ihrer pom.xml und fügen Sie Folg
 
 ```xml
 <dependency>
-    <groupId>com.github.your-github-username</groupId>
+    <groupId>com.github.HunterTagOG</groupId>
     <artifactId>CoinSystem</artifactId>
     <version>REPLACE_WITH_LATEST_VERSION</version>
 </dependency>
 ```
 
-Für weitere Informationen, einschließlich der Verwendung von CoinSystem mit anderen Tools als Maven, besuchen Sie bitte: https://jitpack.io/#HunterTagOG/CoinSystem/
+Für weitere Informationen, einschließlich der Verwendung von CoinSystem mit anderen Tools als Maven, besuchen Sie bitte: [Jitpack](https://jitpack.io/#HunterTagOG/CoinSystem/)
 
 
 ## Quick Start
