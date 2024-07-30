@@ -1,5 +1,3 @@
-[![](https://jitpack.io/v/HunterTagOG/CoinSystem.svg)](https://jitpack.io/#HunterTagOG/CoinSystem)
-
 # CoinSystem Plugin
 
 CoinSystem ist ein Minecraft-Plugin, das eine API zur Verwaltung von Spieler-Coins bereitstellt. Dieses Dokument erklärt, wie Sie das Plugin installieren und die API in Ihren eigenen Plugins verwenden können.
@@ -93,3 +91,5 @@ public class MyPlugin extends JavaPlugin {
         }
     }
 }
+
+[![](https://jitpack.io/v/HunterTagOG/CoinSystem.svg)](https://jitpack.io/#HunterTagOG/CoinSystem)
