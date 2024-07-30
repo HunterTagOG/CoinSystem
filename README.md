@@ -11,6 +11,30 @@ CoinSystem ist ein Minecraft-Plugin, das eine API zur Verwaltung von Spieler-Coi
 - Regelmäßige Backups von Spielerdaten
 - Konfigurierbare Startbalance und Backup-Intervalle
 
+## Importing
+
+Wir verwenden JitPack, um die neueste Version von CoinSystem automatisch zu kompilieren und zu hosten. Um CoinSystem mit Maven zu installieren, öffnen Sie Ihre `pom.xml`, suchen Sie den `<repositories>` Abschnitt und fügen Sie dieses Repository hinzu:
+
+```xml
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+```
+
+Suchen Sie dann den `<dependencies>` Abschnitt Ihrer pom.xml und fügen Sie Folgendes hinzu. Ersetzen Sie "REPLACE_WITH_LATEST_VERSION" durch die neueste Version von: [Github](https://github.com/HunterTagOG/CoinSystem/releases)
+
+```xml
+<dependency>
+    <groupId>com.github.your-github-username</groupId>
+    <artifactId>CoinSystem</artifactId>
+    <version>REPLACE_WITH_LATEST_VERSION</version>
+</dependency>
+```
+
+Für weitere Informationen, einschließlich der Verwendung von CoinSystem mit anderen Tools als Maven, besuchen Sie bitte: https://jitpack.io/#HunterTagOG/CoinSystem/
+
+
 ## Quick Start
 
 1. Importieren Sie CoinSystem mit Maven oder Gradle (siehe Importing).
@@ -37,30 +61,6 @@ CoinSystem ist ein Minecraft-Plugin, das eine API zur Verwaltung von Spieler-Coi
         }
     }
     ```
-
-## Importing
-
-Wir verwenden JitPack, um die neueste Version von CoinSystem automatisch zu kompilieren und zu hosten. Um CoinSystem mit Maven zu installieren, öffnen Sie Ihre `pom.xml`, suchen Sie den `<repositories>` Abschnitt und fügen Sie dieses Repository hinzu:
-
-```xml
-<repository>
-    <id>jitpack.io</id>
-    <url>https://jitpack.io</url>
-</repository>
-```
-
-Suchen Sie dann den `<dependencies>` Abschnitt Ihrer pom.xml und fügen Sie Folgendes hinzu. Ersetzen Sie "REPLACE_WITH_LATEST_VERSION" durch die neueste Version von: [Github](https://github.com/HunterTagOG/CoinSystem/releases)
-
-```xml
-<dependency>
-    <groupId>com.github.your-github-username</groupId>
-    <artifactId>CoinSystem</artifactId>
-    <version>REPLACE_WITH_LATEST_VERSION</version>
-</dependency>
-```
-
-Für weitere Informationen, einschließlich der Verwendung von CoinSystem mit anderen Tools als Maven, besuchen Sie bitte: https://jitpack.io/#HunterTagOG/CoinSystem/
-
 
 ## Methoden
 
