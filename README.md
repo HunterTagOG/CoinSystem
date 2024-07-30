@@ -62,7 +62,7 @@ Suchen Sie dann den `<dependencies>` Abschnitt Ihrer pom.xml und fügen Sie Folg
 Für weitere Informationen, einschließlich der Verwendung von CoinSystem mit anderen Tools als Maven, besuchen Sie bitte: https://jitpack.io/#HunterTagOG/CoinSystem/
 
 
-##Methoden
+## Methoden
 
 `int getCoins(UUID playerUUID)`
 Gibt die Anzahl der Coins für einen bestimmten Spieler zurück.
@@ -76,7 +76,7 @@ Entfernt eine bestimmte Anzahl Coins vom Guthaben eines Spielers.
 `void setCoins(UUID playerUUID, int amount)`
 Setzt das Guthaben eines Spielers auf eine bestimmte Anzahl Coins.
 
-##Konfiguration
+## Konfiguration
 Die Konfiguration des CoinSystem-Plugins erfolgt über die config.yml-Datei. Hier ist ein Beispiel:
 
 ```yaml
@@ -117,7 +117,7 @@ backup_interval_minutes: 30
 logging_enabled: true
 ```
 
-##Kompatibilität
+## Kompatibilität
 Wir bemühen uns, eine breite Kompatibilität zu gewährleisten, die die folgenden Minecraft-Versionen unterstützt und weitere werden folgen:
 
 1.20.x
