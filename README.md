@@ -29,6 +29,7 @@ Suchen Sie dann den `<dependencies>` Abschnitt Ihrer pom.xml und fügen Sie Folg
     <groupId>com.github.HunterTagOG</groupId>
     <artifactId>CoinSystem</artifactId>
     <version>REPLACE_WITH_LATEST_VERSION</version>
+    <scope>provided</scope>
 </dependency>
 ```
 
@@ -46,6 +47,10 @@ Kopieren Sie den folgenden Abschnitt und fügen Sie ihn in Ihren `<plugins>` Abs
 Stellen Sie sicher, dass Sie `your.plugin.main.package` unten in Ihren eigenen Paketnamen ändern.
 
 Wenn Sie eine Abhängigkeit in Ihr Jar kompilieren möchten, installieren Sie sie normal über die `<dependency>` Direktive, setzen Sie ihren Scope auf "compile" und fügen Sie sie dann erneut hinzu. Sie können einfach die `<include>` duplizieren und für Ihre Abhängigkeit ändern.
+
+### Wichtig
+
+Nach dem erzeugen der jar achten sie darauf die jar mit folgendem kürzel `-shaded.jar` am Ende zu verwenden wie in folgendem Beispiel: `plugin-name-1.0-shaded.jar`
 
 ```xml
         <plugin>

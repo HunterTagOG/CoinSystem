@@ -39,7 +39,6 @@ public final class CoinSystem extends SimplePlugin {
         // Register the API
         coinAPI = new CoinAPIImpl(coinManager);
         CoinAPI.setApi(coinAPI);
-        Bukkit.getServicesManager().register(ICoinAPI.class, coinAPI, this, ServicePriority.Normal);
 
         // Register event listeners
         getServer().getPluginManager().registerEvents(new PlayerListener(), this);
