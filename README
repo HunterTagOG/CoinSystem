@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/HunterTagOG/CoinSystem.svg)](https://jitpack.io/#HunterTagOG/CoinSystem)
+
 # CoinSystem Plugin
 
 CoinSystem ist ein Minecraft-Plugin, das eine API zur Verwaltung von Spieler-Coins bereitstellt. Dieses Dokument erklärt, wie Sie das Plugin installieren und die API in Ihren eigenen Plugins verwenden können.
@@ -25,24 +27,23 @@ CoinSystem ist ein Minecraft-Plugin, das eine API zur Verwaltung von Spieler-Coi
 1. **Repository hinzufügen**: Fügen Sie das CoinSystem-Repository zu Ihrer `pom.xml` hinzu:
 
     ```xml
-    <repositories>
-        <repository>
-            <id>my-repo</id>
-            <url>http://your-repo-url</url>
-        </repository>
-    </repositories>
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
     ```
 
 2. **Abhängigkeit hinzufügen**: Fügen Sie die CoinSystem-Abhängigkeit zu Ihrer `pom.xml` hinzu:
 
     ```xml
     <dependencies>
-        <dependency>
-            <groupId>de.huntertagog</groupId>
-            <artifactId>coinsystem</artifactId>
-            <version>1.0</version>
-            <scope>provided</scope>
-        </dependency>
+	    <dependency>
+	        <groupId>com.github.HunterTagOG</groupId>
+	        <artifactId>CoinSystem</artifactId>
+	        <version>v1.0.0-SNAPSHOT</version>
+    	</dependency>
     </dependencies>
     ```
 
