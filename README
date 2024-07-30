@@ -29,7 +29,8 @@ Wir verwenden JitPack, um die neueste Version von CoinSystem automatisch zu komp
     <url>https://jitpack.io</url>
 </repository>
 ```
-Suchen Sie dann den `<dependencies>` Abschnitt Ihrer pom.xml und fügen Sie Folgendes hinzu. Ersetzen Sie "REPLACE_WITH_LATEST_VERSION" durch die neueste Version von: https://github.com/HunterTagOG/CoinSystem/releases
+
+Suchen Sie dann den `<dependencies>` Abschnitt Ihrer pom.xml und fügen Sie Folgendes hinzu. Ersetzen Sie "REPLACE_WITH_LATEST_VERSION" durch die neueste Version von: [Github](https://github.com/HunterTagOG/CoinSystem/releases)
 
 ```xml
 <dependency>
@@ -39,7 +40,7 @@ Suchen Sie dann den `<dependencies>` Abschnitt Ihrer pom.xml und fügen Sie Folg
 </dependency>
 ```
 
-##Shading (wichtig!)
+## Shading (wichtig!)
 Siehe Schritt 2 im Quick Start Guide oben.
 
 CoinSystem kommt mit einigen Bibliotheken, die für Sie verfügbar sind, z.B. HikariCP, um sicherzustellen, dass sie beim Codieren zugänglich sind, aber nicht als Abhängigkeiten hinzugefügt werden müssen.
