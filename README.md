@@ -105,6 +105,11 @@ Nach dem erzeugen der jar achten sie darauf die jar mit folgendem kürzel `-shad
     }
     ```
 
+## Template Plugin
+
+Hier findet ihr ein Template Plugin wie ihr die API in eurem Plugin nutzen könnt: [Template Plugin](https://github.com/HunterTagOG/TemplateCoinSystemAPI?tab=readme-ov-file)
+
+
 ## Methoden
 
 `int getCoins(UUID playerUUID)`
