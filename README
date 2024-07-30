@@ -40,7 +40,7 @@ CoinSystem ist ein Minecraft-Plugin, das eine API zur Verwaltung von Spieler-Coi
 	    <dependency>
 	        <groupId>com.github.HunterTagOG</groupId>
 	        <artifactId>CoinSystem</artifactId>
-	        <version>v1.0.3-SNAPSHOT</version>
+	        <version>v1.0.0-ALPHA</version>
     	</dependency>
     </dependencies>
     ```
@@ -63,7 +63,7 @@ CoinSystem ist ein Minecraft-Plugin, das eine API zur Verwaltung von Spieler-Coi
 
     ```groovy
 	dependencies {
-	        implementation 'com.github.HunterTagOG:CoinSystem:v1.0.3-SNAPSHOT'
+	        implementation 'com.github.HunterTagOG:CoinSystem:v1.0.0-ALPHA'
 	}
     ```
 
