@@ -18,7 +18,6 @@ import java.util.UUID;
 @Getter
 public final class CoinSystem extends SimplePlugin {
 
-    private static CoinSystem instance;
     private CoinManager coinManager;
     @Getter
     private CoinAPIImpl coinAPI;
@@ -83,10 +82,11 @@ public final class CoinSystem extends SimplePlugin {
         // Load logic if needed
     }
 
+    /**
+     * Called when the plugin is reloaded.
+     */
     @Override
     protected void onPluginReload() {
-        // Plugin reload logic
-        instance = null;
         // Save all data when the plugin stops
         for (UUID playerUUID : coinManager.getCoinBalance().keySet()) {
             coinManager.savePlayer(playerUUID);
