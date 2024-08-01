@@ -82,15 +82,20 @@ Nach dem erzeugen der jar achten sie darauf die jar mit folgendem kürzel `-shad
 2. **WICHTIG**: Konfigurieren Sie das Shading, um nur CoinSystem und die benötigten Bibliotheken einzuschließen, damit nicht alle Abhängigkeiten in Ihr Jar aufgenommen werden.
 3. Registrieren Sie die CoinAPI in Ihrem Plugin:
     ```java
+    import de.huntertagog.locobroko.api.CoinAPI;
     import de.huntertagog.locobroko.api.ICoinAPI;
-    import de.huntertagog.locobroko.api.ICoinAPI;import org.bukkit.Bukkit;
+    import org.bukkit.Bukkit;
     import org.bukkit.plugin.java.JavaPlugin;
     import java.util.UUID;
 
     public class MyPlugin extends JavaPlugin {
+
+        @Getter
+        private static ICoinAPI coinAPI;
+
         @Override
         public void onEnable() {
-            ICoinAPI coinAPI = Bukkit.getServicesManager().load(ICoinAPI.class);
+            coinAPI = CoinAPI.getApi();
             if (coinAPI != null) {
                 // Verwenden Sie die API
                 UUID playerUUID = ...; // Die UUID des Spielers
