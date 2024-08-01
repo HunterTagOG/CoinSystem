@@ -12,10 +12,12 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
 
     FileConfiguration config = CoinSystem.getInstance().getConfig();
     private final String prefix;
+    private final String identifier;
     private final CoinManager coinManager;
 
     public PlaceholderAPIHook(CoinManager coinManager) {
         this.prefix = " " + config.getString("prefix");
+        this.identifier = " " + config.getString("placeholders.name");
         this.coinManager = coinManager;
     }
 
@@ -28,7 +30,7 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
     @Override
     @NotNull
     public String getIdentifier() {
-        return "locobrokostars";
+        return identifier;
     }
 
     @Override

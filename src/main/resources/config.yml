@@ -39,7 +39,7 @@ placeholders:
   # The value to be used for the "stars" placeholder
   # This value is retrieved in the CoinSystemExpansion class when the "stars" placeholder is requested
 
-  # %locobrokostars_balance%  # Show the balance of the user who called this Placeholder
+    name: locobrokostars  # Show the balance of the user who called this Placeholder
 
 # Detailed Descriptions:
 #
