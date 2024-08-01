@@ -113,6 +113,15 @@ Nach dem erzeugen der jar achten sie darauf die jar mit folgendem kürzel `-shad
 Hier findet ihr ein Template Plugin wie ihr die API in eurem Plugin nutzen könnt: [Template Plugin](https://github.com/HunterTagOG/TemplateCoinSystemAPI?tab=readme-ov-file)
 
 
+## Placeholder Unterstützung
+
+In der Config Datei bitte `your-placeholder-name` austauschen um es dann nutzen zu können.
+
+
+%your-placeholder-name_balance%         -->        Zeigt die aktuelle Anzahl der Coins an
+
+
+
 ## Methoden
 
 `int getCoins(UUID playerUUID)`
