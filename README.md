@@ -44,8 +44,6 @@ Maven hat eine Einschränkung, bei der diese Bibliotheken in Ihrer Plugin-JAR-Da
 
 Kopieren Sie den folgenden Abschnitt und fügen Sie ihn in Ihren `<plugins>` Abschnitt der pom.xml ein (wenn Sie bereits einen solchen Abschnitt haben, entfernen Sie ihn).
 
-Stellen Sie sicher, dass Sie `your.plugin.main.package` unten in Ihren eigenen Paketnamen ändern.
-
 Wenn Sie eine Abhängigkeit in Ihr Jar kompilieren möchten, installieren Sie sie normal über die `<dependency>` Direktive, setzen Sie ihren Scope auf "compile" und fügen Sie sie dann erneut hinzu. Sie können einfach die `<include>` duplizieren und für Ihre Abhängigkeit ändern.
 
 ### Wichtig
@@ -104,6 +102,11 @@ Nach dem erzeugen der jar achten sie darauf die jar mit folgendem kürzel `-shad
         }
     }
     ```
+
+## Template Plugin
+
+Hier findet ihr ein Template Plugin wie ihr die API in eurem Plugin nutzen könnt: [Template Plugin](https://github.com/HunterTagOG/TemplateCoinSystemAPI?tab=readme-ov-file)
+
 
 ## Methoden
 
@@ -167,7 +170,8 @@ Wir bemühen uns, eine breite Kompatibilität zu gewährleisten, die die folgend
 
 CoinSystem funktioniert auf Bukkit, Spigot und Paper.
 
-##Lizenzinformationen
+## Lizenzinformationen
+
 © 2024 HUNTER DEVELOPMENT
 
 Mit der MIT-Lizenz können Sie alles tun, was Sie möchten, solange Sie die ursprünglichen Urheberrechtsvermerke und Haftungsausschlüsse beibehalten. Eine Kopie der Lizenz finden Sie im Repository.
