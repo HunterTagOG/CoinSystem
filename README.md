@@ -82,15 +82,20 @@ Nach dem erzeugen der jar achten sie darauf die jar mit folgendem kürzel `-shad
 2. **WICHTIG**: Konfigurieren Sie das Shading, um nur CoinSystem und die benötigten Bibliotheken einzuschließen, damit nicht alle Abhängigkeiten in Ihr Jar aufgenommen werden.
 3. Registrieren Sie die CoinAPI in Ihrem Plugin:
     ```java
+    import de.huntertagog.locobroko.api.CoinAPI;
     import de.huntertagog.locobroko.api.ICoinAPI;
-    import de.huntertagog.locobroko.api.ICoinAPI;import org.bukkit.Bukkit;
+    import org.bukkit.Bukkit;
     import org.bukkit.plugin.java.JavaPlugin;
     import java.util.UUID;
 
     public class MyPlugin extends JavaPlugin {
+
+        @Getter
+        private static ICoinAPI coinAPI;
+
         @Override
         public void onEnable() {
-            ICoinAPI coinAPI = Bukkit.getServicesManager().load(ICoinAPI.class);
+            coinAPI = CoinAPI.getApi();
             if (coinAPI != null) {
                 // Verwenden Sie die API
                 UUID playerUUID = ...; // Die UUID des Spielers
@@ -106,6 +111,15 @@ Nach dem erzeugen der jar achten sie darauf die jar mit folgendem kürzel `-shad
 ## Template Plugin
 
 Hier findet ihr ein Template Plugin wie ihr die API in eurem Plugin nutzen könnt: [Template Plugin](https://github.com/HunterTagOG/TemplateCoinSystemAPI?tab=readme-ov-file)
+
+
+## Placeholder Unterstützung
+
+In der Config Datei bitte `your-placeholder-name` austauschen um es dann nutzen zu können.
+
+
+%your-placeholder-name_balance%         -->        Zeigt die aktuelle Anzahl der Coins an
+
 
 
 ## Methoden
