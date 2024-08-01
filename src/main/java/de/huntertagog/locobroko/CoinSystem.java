@@ -1,17 +1,16 @@
 package de.huntertagog.locobroko;
 
 import de.huntertagog.locobroko.api.CoinAPI;
-import de.huntertagog.locobroko.api.ICoinAPI;
 import de.huntertagog.locobroko.api.CoinAPIImpl;
 import de.huntertagog.locobroko.listener.PlayerListener;
 import de.huntertagog.locobroko.manager.CoinManager;
+import de.huntertagog.locobroko.placeholder.PlaceholderAPIHook;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.mineacademy.fo.plugin.SimplePlugin;
-import org.bukkit.plugin.ServicePriority;
 
 import java.util.UUID;
 
@@ -30,7 +29,6 @@ public final class CoinSystem extends SimplePlugin {
     public void onPluginStart() {
         // Plugin startup logic
         this.saveDefaultConfig();
-        coinManager = new CoinManager(getInstance());
 
         // Load all player data into memory
         coinManager.loadAllPlayers();
@@ -39,12 +37,18 @@ public final class CoinSystem extends SimplePlugin {
         coinAPI = new CoinAPIImpl(coinManager);
         CoinAPI.setApi(coinAPI);
 
-        // Register event listeners
-        getServer().getPluginManager().registerEvents(new PlayerListener(), this);
-
         // Schedule regular backups (e.g., every 30 minutes)
         long backupInterval = getConfig().getInt("backup_interval_minutes", 30) * 60 * 20L; // Convert minutes to ticks
         coinManager.scheduleRegularBackups(backupInterval);
+
+        // Register PlaceholderExpansion
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) { //
+            if (new PlaceholderAPIHook(coinManager).register()) {
+                getLogger().info("PlaceholderAPIHook successfully registered.");
+            } else {
+                getLogger().warning("Failed to register PlaceholderAPIHook.");
+            }
+        }
 
         // Schedule regular export and deletion of old logs (e.g., daily)
         scheduleLogExportAndDeletion();
@@ -80,6 +84,8 @@ public final class CoinSystem extends SimplePlugin {
     @Override
     protected void onPluginLoad() {
         // Load logic if needed
+        // Initialisiere den CoinManager
+        coinManager =  CoinManager.getInstance();
     }
 
     /**
@@ -96,7 +102,11 @@ public final class CoinSystem extends SimplePlugin {
 
         // Close the database connection
         coinManager.getDatabase().close();
-        HandlerList.unregisterAll((JavaPlugin) this); // Unregister all listeners for safe reload
+        // Reload config
+        this.reloadConfig();
+        // Unregister all listeners for safe reload
+        HandlerList.unregisterAll((JavaPlugin) this);
+
 
         getLogger().info("@ CoinSystem has been reloaded!");
     }

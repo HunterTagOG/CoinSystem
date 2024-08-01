@@ -30,7 +30,7 @@ public final class LogResetCommand extends SimpleCommand {
         super("logreset|lr");
         this.setUsage("/logreset <player|all>");
         this.setDescription("Resets the logs of a specific player or all logs.");
-        this.coinManager = CoinManager.getInstance();
+        this.coinManager = CoinSystem.getInstance().getCoinManager();
         this.setMinArguments(0);
     }
 

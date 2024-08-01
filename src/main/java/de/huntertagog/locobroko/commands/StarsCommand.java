@@ -33,7 +33,7 @@ public final class StarsCommand extends SimpleCommand {
         super("stars|s");
         this.setUsage("/stars <subcommand> <player> <amount>");
         this.setDescription("Stars Command");
-        this.coinManager = CoinManager.getInstance();
+        this.coinManager = CoinSystem.getInstance().getCoinManager();
         this.setMinArguments(0);
         this.prefix = " " + config.getString("prefix");
     }

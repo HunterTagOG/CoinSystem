@@ -32,7 +32,7 @@ public final class LogCommand extends SimpleCommand {
         super("log|lg");
         this.setUsage("/log <player>");
         this.setDescription("Shows the transaction logs of a player.");
-        this.coinManager = CoinManager.getInstance();
+        this.coinManager = CoinSystem.getInstance().getCoinManager();
         this.setMinArguments(0);
     }
 

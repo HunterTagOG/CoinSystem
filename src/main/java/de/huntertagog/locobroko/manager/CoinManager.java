@@ -4,9 +4,7 @@ import de.huntertagog.locobroko.CoinSystem;
 import de.huntertagog.locobroko.database.Database;
 import lombok.Getter;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.mineacademy.fo.plugin.SimplePlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,9 +20,12 @@ import java.util.UUID;
  */
 @Getter
 public class CoinManager {
+
     private static final Logger logger = LoggerFactory.getLogger(CoinManager.class);
 
+    // Statische Variable für die einzige Instanz
     private static CoinManager instance;
+
     private final CoinSystem plugin;
     private final Map<UUID, Integer> coinBalance;
     private final int startingBalance;
@@ -33,13 +34,10 @@ public class CoinManager {
     private final boolean backupEnabled;
 
     /**
-     *
-     * Initializes the CoinManager with the given plugin instance.
-     * Loads the configuration and initializes the database.
-     *
+     * Privater Konstruktor zur Vermeidung von direkter Instanziierung.
      */
-    public CoinManager(CoinSystem plugin) {
-        this.plugin = plugin;
+    private CoinManager() {
+        this.plugin = CoinSystem.getInstance();
         this.coinBalance = new HashMap<>();
         FileConfiguration config = plugin.getConfig();
         this.startingBalance = config.getInt("starting_balance");
@@ -52,9 +50,14 @@ public class CoinManager {
         );
     }
 
-    public static CoinManager getInstance() {
+    /**
+     * Liefert die einzige Instanz des CoinManager zurück.
+     *
+     * @return die Instanz von CoinManager
+     */
+    public static synchronized CoinManager getInstance() {
         if (instance == null) {
-            instance = new CoinManager(CoinSystem.getInstance());
+            instance = new CoinManager();
         }
         return instance;
     }

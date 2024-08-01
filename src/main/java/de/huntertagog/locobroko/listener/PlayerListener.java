@@ -1,15 +1,19 @@
 package de.huntertagog.locobroko.listener;
 
+import de.huntertagog.locobroko.CoinSystem;
 import de.huntertagog.locobroko.manager.CoinManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.mineacademy.fo.annotation.AutoRegister;
 
 /**
  * Listener class for handling player join and quit events.
  */
-public class PlayerListener implements Listener {
+
+@AutoRegister
+public final class PlayerListener implements Listener {
     private final CoinManager coinManager;
 
     /**
@@ -18,7 +22,7 @@ public class PlayerListener implements Listener {
      *
      */
     public PlayerListener() {
-        this.coinManager = CoinManager.getInstance();
+        this.coinManager = CoinSystem.getInstance().getCoinManager();
     }
 
     /**
